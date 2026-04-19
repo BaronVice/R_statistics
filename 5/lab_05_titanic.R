@@ -10,6 +10,10 @@ library("ggplot2")  # графики
 library("reshape2") # манипуляции с данными
 library("AUC")      # для ROC кривой и AUC-метрики
 library("lmtest")   # для LR-теста (lrtest)
+library("showtext")
+
+font_add("FreeSans", "/usr/share/fonts/truetype/freefont/FreeSans.ttf")
+showtext_auto()
 
 # при загрузке файлов R автоматом переделывает все строковые переменные в
 # факторные эта шаманская команда просит R так не делать :)

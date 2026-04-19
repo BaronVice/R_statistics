@@ -3,6 +3,10 @@ library(cluster)
 library(ggplot2)
 library(reshape2)
 library(gridExtra)
+library(showtext)
+
+font_add("FreeSans", "/usr/share/fonts/truetype/freefont/FreeSans.ttf")
+showtext_auto()
 
 # ── Пути к данным и к директории для сохранения графиков ─────────────────────
 data_dir <- "Clusters"

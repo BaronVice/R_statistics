@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libssl-dev \
         libcurl4-openssl-dev \
         cmake \
+        fonts-freefont-ttf \
+        libfreetype6-dev \
+        libpng-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # ── R packages not bundled with rocker/tidyverse ──────────────────────────────
@@ -27,11 +30,15 @@ RUN Rscript -e "\
         'pander',    \
         'sjPlot',    \
         'erer',      \
-        'gridExtra'  \
+        'gridExtra', \
+        'showtext',  \
+        'reshape2',  \
+        'AUC'        \
     ), repos = 'https://cloud.r-project.org', Ncpus = parallel::detectCores()) \
 "
 
-RUN Rscript -e "install.packages(c('reshape2', 'AUC'), repos = 'https://cloud.r-project.org', Ncpus = parallel::detectCores())"
+# ── DIAGNOSTIC: fail loudly if showtext did not install ──────────────────────
+RUN Rscript -e "if (!requireNamespace('showtext', quietly = TRUE)) stop('[DIAG] showtext is NOT installed – check build log above for sysfonts compile errors')"
 
 WORKDIR /app
 RUN mkdir -p /output

@@ -9,6 +9,10 @@ library("pander")
 library("sjPlot")
 library("knitr")
 library("gridExtra")
+library("showtext")
+
+font_add("FreeSans", "/usr/share/fonts/truetype/freefont/FreeSans.ttf")
+showtext_auto()
 
 
 plots_dir <- "/output"
