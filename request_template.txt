@@ -1,0 +1,13 @@
+
+--- Step 1 ---
+Task in task.txt
+Workdir 5
+Since task is based on RU language your code comments and reasoning should be on the same language
+Put comments on code implemented by you to explain why it is used (except such basics as library, setwd, etc.)
+
+--- Step2 ---
+After that launch solution as "make l5"
+Based on it's result do the following:
+1. Describe console output
+2. Describe graphical output
+Do not go into details. Explain generally. When describing png make sure to show png (via ![png_1](path/to.png)). Do it in separate file (README.md)

@@ -1,0 +1,37 @@
+# ── Shared R base image for all labs ─────────────────────────────────────────
+# Built once via `make base` → local image tag  r-lab-base:latest
+# All per-lab Dockerfiles inherit from this image to avoid repeating the
+# slow apt + R-package installation layers.
+#
+FROM r-base:4.5.3
+
+# ── System dependencies ───────────────────────────────────────────────────────
+# libxt-dev            → vcd / grid graphics
+# libssl-dev           → httr / sjPlot transitive deps
+# libcurl4-openssl-dev → httr / sjPlot transitive deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libxt-dev \
+        libssl-dev \
+        libcurl4-openssl-dev \
+        cmake \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── R packages not bundled with rocker/tidyverse ──────────────────────────────
+RUN Rscript -e "\
+    install.packages(c( \
+        'memisc',    \
+        'lmtest',    \
+        'foreign',   \
+        'vcd',       \
+        'hexbin',    \
+        'pander',    \
+        'sjPlot',    \
+        'erer',      \
+        'gridExtra'  \
+    ), repos = 'https://cloud.r-project.org', Ncpus = parallel::detectCores()) \
+"
+
+RUN Rscript -e "install.packages(c('reshape2', 'AUC'), repos = 'https://cloud.r-project.org', Ncpus = parallel::detectCores())"
+
+WORKDIR /app
+RUN mkdir -p /output

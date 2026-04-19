@@ -1,0 +1,36 @@
+services:
+
+  # ── Lab 3 – Diamonds analysis ───────────────────────────────────────────────
+  lab3:
+    build:
+      context: ./3                # build context = lab 3 directory
+      dockerfile: ../Dockerfile   # shared Dockerfile at repo root
+      args:
+        SCRIPT: lab3_daimonds.R
+    volumes:
+      - ./3/output:/output
+    restart: "no"
+
+  # ── Lab 5 – Titanic analysis ────────────────────────────────────────────────
+  lab5:
+    build:
+      context: ./5                # build context = lab 5 directory
+      dockerfile: ../Dockerfile   # shared Dockerfile at repo root
+      args:
+        SCRIPT: lab_05_titanic.R
+    volumes:
+      - ./5/output:/output
+      - ./5/titanic3.csv:/app/titanic3.csv
+    restart: "no"
+
+  # ── Lab 6 – Lab 6 analysis ──────────────────────────────────────────────────
+  lab6:
+    build:
+      context: ./6                # build context = lab 6 directory
+      dockerfile: ../Dockerfile   # shared Dockerfile at repo root
+      args:
+        SCRIPT: lab_06.R
+    volumes:
+      - ./6/output:/output
+      - ./6/Clusters:/app/Clusters
+    restart: "no"
