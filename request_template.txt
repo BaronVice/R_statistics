@@ -11,3 +11,12 @@ Based on it's result do the following:
 1. Describe console output
 2. Describe graphical output
 Do not go into details. Explain generally. When describing png make sure to show png (via ![png_1](path/to.png)). Do it in separate file (README.md)
+
+--- Step 3 ---
+Directory 3.
+Describe each graphics: what do graphic shows, its meaning and conclusion about it.
+Graphics are based on data that is gathered via launching R script.
+In order to launch script use from dir r_d: `make l3`
+First launch script. After that procceed with desctiption since program output is essential
+Graphics are shown in README, so replace current graphics description by your own.
+Since task is based on RU language your code comments and reasoning should be on the same language
